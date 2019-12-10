@@ -1,5 +1,3 @@
-* Internship Project
-
 # Filterfy is a simple for for GitHub issues!
 Filterfy's a small command line project written in JavaScript made to interact with GitHub's API! It transcribes the issues of any specific repository into a .CSV file. To use it, it's necessary to have Node.JS and the [Node-Fetch](https://www.npmjs.com/package/node-fetch) module.
 
