@@ -10,19 +10,19 @@ const readline = require('readline').createInterface({
 });
 //Gets the user's URL and validates it
 const filterfy = readline.question(`Please insert the full URL of the desired repository: `, (repo) => {
-	let testURL = repo.substr(0, 18);
-	if(testURL === `https://github.com`) {
-		let validURL = repo.substr(19, );
-		let gitRepo = `https://api.github.com/repos/${validURL}/issues?=page=1&per_page=100`;
+	let inputURL = repo.substr(0, 18);
+	if(inputURL === `https://github.com`) {
+		let validUserURL = repo.substr(19, );
+		let gitRepo = `https://api.github.com/repos/${validUserURL}/issues?=page=1&per_page=100`;
 	//Uses the user's URL to fetch the info from the API and turns it into a JS object array
 		async function getGit() {
 			let gitInfo;
-			let response = await fetch(gitRepo);
-			gitInfo = await response.text();
-			let objection = JSON.parse(gitInfo);
+			let fetchResponse = await fetch(gitRepo);
+			gitInfo = await fetchResponse.text();
+			let makeJsonObject = JSON.parse(gitInfo);
 		//Filtering the content of the array. 
 			let issues = "title― body― state― number― assignee― labels― milestone\n";
-			objection.filter(function(finalData) {
+			makeJsonObject.filter(function(finalData) {
 			//Makes sure we get the correct data for the Assignee login and Milestone Title.
 				let assigneeLogin = finalData.assignee;
 				if(assigneeLogin != null && "login" in assigneeLogin) assigneeLogin = assigneeLogin.login;
