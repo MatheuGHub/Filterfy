@@ -15,7 +15,7 @@ const filterfy = readline.question(`Please insert the full URL of the desired re
 		let validUserURL = repo.substr(19, );
 		let gitRepo = `https://api.github.com/repos/${validUserURL}/issues?=page=1&per_page=100`;
 	//Uses the user's URL to fetch the info from the API and turns it into a JS object array
-		async function getGit() {
+		async function getGitInfo() {
 			let gitInfo;
 			let fetchResponse = await fetch(gitRepo);
 			gitInfo = await fetchResponse.text();
@@ -46,7 +46,7 @@ const filterfy = readline.question(`Please insert the full URL of the desired re
 				console.log("Your issues have been saved!", 'You can find your file in the Filterfy folder.', 'Bye!');
 			});
 		}
-		getGit();
+		getGitInfo();
 	}
 	//In case the user's URL doesn't match the expected parameters.
 	else {
